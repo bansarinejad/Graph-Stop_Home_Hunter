@@ -42,26 +42,20 @@ Generate synthetic data and train everything:
 
 ```bash
 # 1) offline data
-python make_training_data_v4_fixed_live.py      # ⇢ train_listings.csv / test_listings.csv
-python create_mock_listings.py                  # ⇢ data_snapshots/week_0.csv … week_9.csv
+python make_training_data.py                # ⇢ train_listings.csv / test_listings.csv
+python create_mock_listings.py              # ⇢ data_snapshots/week_0.csv … week_9.csv
 
 # 2) train GNN
-python graph_home_hunter.py        --train-graph train_listings.csv gnn.pt
+python graph_home_hunter.py --train-graph train_graph.pt gnn_v1.pt --epochs 150 --patience 50 --lr 1e-3
 
 # 3) train stack (embeddings + tabular head)
-python graph_home_hunter.py        --train-stack train_listings.csv gnn.pt head.pkl        --stack-model logreg --calib isotonic --top-k-tab 150
-```
-
-Run a one‑off week:
-
-```bash
-python graph_home_hunter.py        --predict-stack data_snapshots/week_5.csv gnn.pt head.pkl        --thr 0.95 --wait-cost 0.02 --regret-cost 0.2
+python graph_home_hunter.py --train-stack train_listings.csv gnn_v1.pt logreg_head.pkl --stack-model logreg --calib sigmoid
 ```
 
 Replay many weeks with the Bayesian planner:
 
 ```bash
-python simulate_weeks.py                                             data_snapshots/week_5.csv data_snapshots/week_6.csv ...        --gnn gnn.pt --head head.pkl --thr 0.95
+python simulate_weeks.py --gnn gnn_v1.pt --head logreg_head.pkl --thr 0.95 --wait-cost 0.02 --regret-cost 0.2 week_0.csv week_1.csv week_2.csv week_3.csv week_4.csv week_5.csv week_6.csv week_7.csv week_8.csv week_9.csv
 ```
 
 Launch the Streamlit demo:
@@ -69,17 +63,6 @@ Launch the Streamlit demo:
 ```bash
 streamlit run home_hunter_app.py
 ```
-
----
-
-## 📊 Key results (synthetic‑data baseline)
-
-| Model | ROC‑AUC | F1 @ τ=0.95 | *Median wait weeks* |
-|-------|---------|-------------|---------------------|
-| GAT‑only | 0.81 | 0.57 | 4 |
-| **GAT + LogReg + OVP** | **0.89** | **0.71** | **1** |
-
-*(seed 42, 20 k training rows, 10‑week simulation)*
 
 ---
 
