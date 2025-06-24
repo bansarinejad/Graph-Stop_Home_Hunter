@@ -55,7 +55,7 @@ python graph_home_hunter.py        --train-stack train_listings.csv gnn.pt head.
 Run a one‑off week:
 
 ```bash
-python graph_home_hunter.py        --predict-stack data_snapshots/week_5.csv gnn.pt head.pkl        --thr 0.95 --wait-cost 0.02 --regret-cost 0.35
+python graph_home_hunter.py        --predict-stack data_snapshots/week_5.csv gnn.pt head.pkl        --thr 0.95 --wait-cost 0.02 --regret-cost 0.2
 ```
 
 Replay many weeks with the Bayesian planner:
