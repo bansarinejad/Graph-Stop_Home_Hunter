@@ -63,7 +63,7 @@ Launch the Streamlit demo:
 ```bash
 streamlit run home_hunter_app.py
 ```
-
+1 minute video of the demo: https://drive.google.com/file/d/1fQhc85TQ-Wtn48h6t4pI5sgShT2KzLca/view?usp=sharing
 ---
 
 ## 🔍 Explainability
