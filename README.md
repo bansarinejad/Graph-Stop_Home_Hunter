@@ -70,9 +70,6 @@ streamlit run home_hunter_app.py
 
 * `IntentHead.explain()` returns **Δ log‑odds** per feature.  
 * The UI surfaces the top‑k drivers so users see *why* a listing is (or isn’t) recommended.
-
-![explain](docs/img/explainability_example.png)
-
 ---
 
 ## ⚙️ Hyper‑parameters that matter
