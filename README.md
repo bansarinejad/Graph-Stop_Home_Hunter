@@ -90,9 +90,3 @@ streamlit run home_hunter_app.py
 * Hook into a live Domain / Zillow feed  
 
 PRs welcome!
-
----
-
-## 📝 License
-
-MIT – have fun, give credit, no warranty.
