@@ -22,7 +22,7 @@
 ├── home_hunter_app.py          # Streamlit UI
 ├── simulate_weeks.py           # Batch replay helper
 ├── create_mock_listings.py     # 10‑week snapshot generator
-├── make_training_data_v4_fixed_live.py  # large train/test CSV generator
+├── make_training_data.py       # large train/test CSV generator
 ├── option_value.py             # standalone OVP prototype
 └── data_snapshots/             # ⇡ auto‑generated weekly CSVs
 ```
